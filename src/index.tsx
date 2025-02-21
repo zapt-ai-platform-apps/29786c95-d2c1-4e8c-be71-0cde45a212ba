@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import * as Sentry from '@sentry/browser';
@@ -26,7 +27,7 @@ window.progressierAppRuntimeSettings = {
 let progressierScript = document.createElement('script');
 progressierScript.setAttribute('src', 'https://progressier.app/z8yY3IKmfpDIw3mSncPh/script.js');
 progressierScript.setAttribute('defer', 'true');
-document.querySelector('head').appendChild(progressierScript);
+document.querySelector('head')?.appendChild(progressierScript);
 
 // Umami Analytics
 if (import.meta.env.VITE_PUBLIC_APP_ENV !== 'development') {
@@ -40,6 +41,8 @@ if (import.meta.env.VITE_PUBLIC_APP_ENV !== 'development') {
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
